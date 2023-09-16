@@ -1,0 +1,125 @@
+import React from "react";
+import logo from "../../assets/images/logo.png";
+import { useEffect, useRef } from "react";
+import { NavLink, Link } from "react-router-dom";
+import userImg from "../../assets/images/avatar-icon.png";
+import { BiMenu } from "react-icons/bi";
+
+// const bot = "https://www.youtube.com/";
+
+const navLinks = [
+  {
+    path: "/home",
+    display: "Home",
+  },
+  {
+    path: "/doctors",
+    display: "Find a Hospital",
+  },
+  {
+    path: "/services",
+    display: "Services",
+  },
+  {
+    path: "/contact",
+    display: "Contact",
+  },
+
+];
+
+const Header = () => {
+  const headerRef = useRef(null);
+  const menuRef = useRef(null);
+
+  const handleStickyHeader = () => {
+    window.addEventListener("scroll", () => {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current.classList.add("sticky_header");
+      } else {
+        headerRef.current.classList.remove("sticky_header");
+      }
+    });
+  };
+
+  useEffect(() => {
+    handleStickyHeader();
+
+    return () => window.removeEventListener("scroll", handleStickyHeader);
+  });
+
+  const toggleMenu = () => menuRef.current.classList.toggle("show_menu");
+
+  return (
+    <header className="header" ref={headerRef}>
+      <div className="container flex items-center justify-between">
+        {/* Logo */}
+        <Link to="/">
+          <div>
+            <img
+              src={logo}
+              alt=""
+              className="cursor-pointer"
+            />
+          </div>
+        </Link>
+        {/* Menu */}
+        <div className="navigation" ref={menuRef} onClick={toggleMenu}>
+          <ul className="menu flex items-center gap-[2.7rem]">
+            {navLinks.map((link, index) => (
+              <li key={index}>
+                <NavLink
+                  to={link.path}
+                  className={(navClass) =>
+                    navClass.isActive
+                      ? "text-primaryColor text-[16px] leading-7 font-[600]"
+                      : "text-textColor text-[16px] leading-7 font-[500] hover:text-primaryColor"
+                  }
+                >
+                  {link.display}
+                </NavLink>
+              </li>
+
+            ))}
+            {/* <li>
+              <a href={bot} target="_blank" rel="noopener noreferrer">
+                ChatBot
+              </a>
+            </li> */}
+
+          </ul>
+        </div>
+
+        {/* Nav right */}
+        <div className="flex items-center gap-4">
+          {/* <div>
+            <Link to="/">
+              <figure className="w-[35px] h-[35px] rounded-full">
+                <img src={userImg} className="w-full rounded-full" />
+              </figure>
+            </Link>
+          </div> */}
+
+          <Link to="/login">
+            <button className="bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px]">
+              Login for User
+            </button>
+          </Link>
+          <Link to="/admin">
+            <button className="bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px]">
+              Login for Admin
+            </button>
+          </Link>
+
+          <span className="md:hidden" onClick={toggleMenu}>
+            <BiMenu className="w-6 h-6 cursor-pointer" />
+          </span>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;

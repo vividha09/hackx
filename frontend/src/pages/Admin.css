@@ -1,0 +1,97 @@
+.registration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+
+.left-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* .image-container {
+    flex: 1;
+    background-image: url('C:\Users\Kirsh\Desktop\HackX\hackx\frontend\src\assets\images\adminbg.jfif');
+     background-size: 40px; 
+    background-position: center;
+  }*/ 
+
+.left-panel img {
+  max-width: 100%;
+  height: auto;
+}
+
+.right-panel {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin: 20px;
+  max-width: 400px;
+}
+
+.right-panel h2{
+    font-weight: 600px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #050505; /* You can adjust the color as needed */
+  }
+
+label {
+  display: block;
+  font-weight: bold;
+  color: #555;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #97d5ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.output {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.output h3 {
+  text-align: center;
+  color: #333;
+}
